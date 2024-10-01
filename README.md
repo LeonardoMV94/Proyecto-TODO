@@ -4,6 +4,9 @@
 
 Pagina web para la gestion de tareas.
 
+![Imagen del proyecto](image.png)
+
+
 ## Tecnologias a usar
 
 - HTML

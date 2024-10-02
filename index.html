@@ -10,6 +10,8 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <title>Lista de Tareas</title>
 </head>
 
@@ -17,7 +19,7 @@
     <div class="full_format_form">
         <div class="form_completo">
             <div class="title_list">
-                <h1>Lista de Tareas</h1>
+                <h1 class="">Lista de Tareas</h1>
             </div>
             <div class="contenido_list">
                 <input type="text" id="tareaInput" placeholder="Agrega una tarea">
@@ -28,21 +30,30 @@
                 <table class="table" id="tabla-tareas">
                     
                     <tbody id="cuerpo-tabla">
-                     <tr>
+                     <!-- <tr>
                         <td>Tarea</td>
-                        <td><i class="fa-solid fa-check text-success"></i></td>
-                        <td><i class="fa-solid fa-pencil text-warning"></i></td>
-                        <td><i class="fa-solid fa-x text-danger"></i></td>
-                     </tr>
+                        <td width = "10%"><i class="fa-solid fa-check text-success"></i></td>
+                        <td width = "10%"><i class="fa-solid fa-pencil text-warning"></i></td>
+                        <td width = "10%"><i class="fa-solid fa-x text-danger"></i></td>
+                     </tr> -->
                     </tbody>
                   </table>
             </div>
         </div>
     </div>
 
+    <div class="container text-center mt-3">
+        <div class="row">
+            <div class="col">
+                <div class="brand">Eleven Holding Team <i class="fa-regular fa-registered"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-    <script type="module" src="assets/js/index.js"></script>
+
+    <script type="module" src="./assets/js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

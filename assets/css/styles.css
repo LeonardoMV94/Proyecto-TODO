@@ -70,6 +70,14 @@ button {
     cursor: pointer;
 }
 
+.trans {
+    background-color: transparent;
+    border: none;
+}
+.trans:hover {
+    background-color: lightblue;
+    border-radius: 50%;
+}
 button:hover {
     background-color: #1565c0; 
 }

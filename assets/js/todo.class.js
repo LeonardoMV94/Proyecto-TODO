@@ -1,7 +1,7 @@
 class Tarea {
     constructor(titulo, estado) {       
         this.titulo = titulo;
-        this.estado = estado; // porhacer | listo
+        this.estado = estado; // boolean
     }
 
     getTitulo(){
@@ -10,6 +10,14 @@ class Tarea {
 
     getEstado() {
         return this.estado
+    }
+
+    setEstado() {
+        this.estado = !this.estado
+    }
+
+    setTitulo(titulo) {
+        this.titulo = titulo
     }
 }
 

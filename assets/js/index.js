@@ -27,8 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   window.eliminarTarea = (id) => {
+    const elemento = document.getElementById(`tarea-${id}`);
     console.log("id eliminar ", id);
     tareas.eliminarTarea(id);
+    
+    setInterval(() => {
+      elemento.classList.add('animate__animated', 'animate__bounceOutLeft');
+    }, 1000);
     tareas.renderizarHTML();
   };
 

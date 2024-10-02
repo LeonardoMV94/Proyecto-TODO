@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+h1 {
+  color: #333;
+}
+input, button {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  padding: 8px;
+  background: #fff;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+li:hover {
+  background-color: #f1f1f1;
+}
+.edit-button, .delete-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.delete-button {
+  background-color: #f44336;
+}

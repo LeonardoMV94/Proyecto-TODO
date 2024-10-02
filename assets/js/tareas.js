@@ -1,8 +1,22 @@
 import Tarea from "./todo.class.js";
 
 class ListadoTareas {
+  tareas = [];
   constructor() {
-    this.tareas = JSON.parse(localStorage.getItem('tareas')) || [];
+    this.cargarTareas();
+    this.renderizarHTML();
+  }
+
+  cargarTareas() {
+    const tareasGuardadas = localStorage.getItem('tareas');
+    if (tareasGuardadas) {
+      const tareasParseadas = JSON.parse(tareasGuardadas);
+      console.log("tareasParseadas ", tareasParseadas)
+      this.tareas = tareasParseadas.map(tarea => new Tarea(tarea.titulo, tarea.completada));
+      console.log("this.tareas ", this.tareas)
+    } else {
+      this.tareas = [];
+    }
   }
 
   // Método para guardar las tareas en localStorage
@@ -35,6 +49,7 @@ class ListadoTareas {
   }
 
   renderizarHTML() {
+    
     const $ = document.querySelector.bind(document);
     const tareasElement = $("#cuerpo-tabla");
 
@@ -47,6 +62,7 @@ class ListadoTareas {
 
       const celdaTitulo = document.createElement('td');
       celdaTitulo.id = `tarea-${indice}`;
+      console.log('tarea renderizado: ', tarea)
       celdaTitulo.className = tarea.getEstado() ? 'text-decoration-line-through' : '';
       celdaTitulo.textContent = tarea.getTitulo();
       fila.appendChild(celdaTitulo);

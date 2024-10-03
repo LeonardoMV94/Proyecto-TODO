@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const elemento = document.getElementById(`tarea-${id}`);
     tareas.completarTarea(id);    
     if (!elemento.classList.contains("text-decoration-line-through")) {
-      elemento.classList.add("text-decoration-line-through");
+      elemento.classList.add("text-decoration-line-through","text-secondary");
     } else {
-      elemento.classList.remove("text-decoration-line-through");
+      elemento.classList.remove("text-decoration-line-through","text-secondary");
     }
   };
 
@@ -42,7 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const elementoEditar = document.getElementById(`editar-${id}`);
     elemento.contentEditable = true;
     elemento.focus();
-    elementoEditar.classList.remove("fa-pencil");
+    elementoEditar.classList.remove("fa-pencil", "fa-flip", "fa-solid", "text-success", "text-warning");
+    elementoEditar.addEventListener('mouseover', () => {
+      elementoEditar.classList.add('text-decoration-underline');
+    });
+    elementoEditar.addEventListener('mouseout', () => {
+      elementoEditar.classList.remove('text-decoration-underline');
+    });
+    // elemento.classList.add("text-decoration-underline","text-secondary");
+    
     elementoEditar.textContent = "Guardar";
     elementoEditar.addEventListener("click", () => {
       if (elemento.textContent.trim() !== "") {

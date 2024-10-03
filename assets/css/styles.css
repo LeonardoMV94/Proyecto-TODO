@@ -63,7 +63,7 @@ input[type="text"] {
     margin-top: 8rem;
 }
 
-button {
+.contenido_list button {
     background-color: #1976d2;
     color: white;
     border: none;
@@ -71,6 +71,8 @@ button {
     border-radius: 7px;
     cursor: pointer;
 }
+
+
 
 .trans {
     background-color: transparent;

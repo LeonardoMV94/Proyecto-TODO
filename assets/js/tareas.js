@@ -1,7 +1,7 @@
 import Tarea from "./todo.class.js";
 
 class ListadoTareas {
-  tareas = [];
+  tareas = new Set();
   constructor() {
     this.cargarTareas();
     this.renderizarHTML();
@@ -12,39 +12,45 @@ class ListadoTareas {
     if (tareasGuardadas) {
       const tareasParseadas = JSON.parse(tareasGuardadas);
       console.log("tareasParseadas ", tareasParseadas)
-      this.tareas = tareasParseadas.map(tarea => new Tarea(tarea.titulo, tarea.completada));
+      this.tareas = new Set(tareasParseadas.map(tarea => new Tarea(tarea.titulo, tarea.estado)));
       console.log("this.tareas ", this.tareas)
     } else {
-      this.tareas = [];
+      this.tareas = new Set();
     }
   }
 
   // Método para guardar las tareas en localStorage
   guardarEnLocalStorage() {
-    localStorage.setItem('tareas', JSON.stringify(this.tareas));
+    localStorage.setItem('tareas', JSON.stringify(Array.from(this.tareas)));
   }
 
   // metodos agregar eliminar
   agregarTarea(input) {
     const nuevaTarea = new Tarea(input, false);
-    this.tareas.push(nuevaTarea);
+    this.tareas.add(nuevaTarea);
     this.guardarEnLocalStorage();
   }
 
   eliminarTarea(id) {
-    this.tareas.splice(id, 1);
+    const tareasArray = Array.from(this.tareas);
+    tareasArray.splice(id, 1);
+    this.tareas = new Set(tareasArray);
     this.guardarEnLocalStorage();
   }
 
   editarTarea(indice, nuevoTitulo) {
-    this.tareas[indice].titulo = nuevoTitulo;
-    console.log("estado ", this.tareas[indice].getEstado());
+    const tareasArray = Array.from(this.tareas);
+    tareasArray[indice].titulo = nuevoTitulo;
+    this.tareas = new Set(tareasArray);
+    console.log("estado ", tareasArray[indice].getEstado());
     this.guardarEnLocalStorage();
   }
 
   completarTarea(indice) {
-    console.log("indice ", this.tareas[indice].getEstado());
-    this.tareas[indice].setEstado();
+    const tareasArray = Array.from(this.tareas);
+    console.log("indice ", tareasArray[indice].getEstado());
+    tareasArray[indice].setEstado();
+    this.tareas = new Set(tareasArray);
     this.guardarEnLocalStorage();
   }
 
@@ -56,8 +62,9 @@ class ListadoTareas {
     // Limpiamos el contenido existente
     tareasElement.innerHTML = '';
 
-    for (const [indice, tarea] of this.tareas.entries()) {
+    Array.from(this.tareas).forEach((tarea, indice) => {
       const fila = document.createElement('tr');
+      
       fila.className = 'animate__animated animate__slideInDown';
 
       const celdaTitulo = document.createElement('td');
@@ -81,9 +88,9 @@ class ListadoTareas {
       const botonEditar = document.createElement('button');
       botonEditar.id = `editar-${indice}`;
       botonEditar.onclick = () => editarTarea(indice);
-      botonEditar.className = 'fa-solid fa-pencil text-warning trans';
+      botonEditar.className = 'fa-solid fa-pencil fa-flip text-warning trans';
       celdaEditar.appendChild(botonEditar);
-      fila.appendChild(celdaEditar);
+      fila.appendChild(celdaEditar);  
 
       const celdaEliminar = document.createElement('td');
       celdaEliminar.width = '10%';
@@ -95,7 +102,7 @@ class ListadoTareas {
       fila.appendChild(celdaEliminar);
 
       tareasElement.appendChild(fila);
-    }
+    });
   }
   
 }
